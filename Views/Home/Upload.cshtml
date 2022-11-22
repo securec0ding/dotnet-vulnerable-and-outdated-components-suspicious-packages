@@ -1,0 +1,19 @@
+
+@{
+    ViewData["Title"] = "Upload a zip";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<h2>@ViewData["Title"]</h2>
+<hr />
+<form method="post" enctype="multipart/form-data">
+  <input type="file" name="fileFromUser" class="form-control" placeholder="images.zip" />
+  <br />
+  <input type="submit" name="btnOK" value="Upload" class="btn btn-primary" />
+</form>
+@if (ViewData["ErrorMessage"] != null)
+{
+  <div class="alert alert-warning" role="alert">
+    @ViewData["ErrorMessage"]
+  </div>
+}

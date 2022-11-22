@@ -1,0 +1,27 @@
+@model Dictionary<string, List<string>>
+@{
+    ViewData["Title"] = "Gallery";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+<h2>@ViewData["Title"]</h2>
+<a href="~/upload">Upload pictures</a>
+@if (User.Identity.IsAuthenticated)
+{
+  <span> | </span>
+  <a href="~/logout">Logout @User.Identity.Name</a>
+}
+<hr />
+@foreach (string userName in Model.Keys)
+{
+  <h3>@userName</h3>
+  @if (Model[userName].Count > 0)
+  {
+    <ul>
+      @foreach (var imageName in Model[userName])
+      {
+        <li><a href="~/gallery/@userName/@imageName" target="_blank">@imageName</a></li>
+      }
+    </ul>
+  }
+}
